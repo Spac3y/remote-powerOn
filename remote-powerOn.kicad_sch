@@ -5,10 +5,10 @@
 	(uuid "5313f927-e87d-49ca-822d-461a5cd575a2")
 	(paper "A4")
 	(title_block
-		(title "v1.1.0 Relay controller with GPIO ")
-		(date "2026-06-06")
-		(rev "JUN_2026")
-		(comment 4 "1.1.0: Fix pin headers footprint 1mm -> 2.54mm")
+		(title "Relay controller with GPIO ")
+		(date "2026-06-09")
+		(rev "1.2.1")
+		(comment 4 "For version changes check change.md")
 	)
 	(lib_symbols
 		(symbol "Connector:Conn_01x02_Pin"
@@ -1486,7 +1486,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Transistor_BJT:2SC1941"
+		(symbol "Transistor_BJT:BC517"
 			(pin_names
 				(offset 0)
 				(hide yes)
@@ -1507,7 +1507,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "2SC1941"
+			(property "Value" "BC517"
 				(at 5.08 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1531,7 +1531,7 @@
 					(justify left)
 				)
 			)
-			(property "Datasheet" "http://rtellason.com/transdata/2sc1941.pdf"
+			(property "Datasheet" "https://www.onsemi.com/pub/Collateral/BC517-D74Z-D.PDF"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1543,7 +1543,7 @@
 					(justify left)
 				)
 			)
-			(property "Description" "50mA Ic, 160V Vce, Audio High Voltage NPN Transistor, TO-92"
+			(property "Description" "1A Ic, 30V Vce, Darlington NPN Transistor, TO-92"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1554,29 +1554,7 @@
 					)
 				)
 			)
-			(property "Sim.Device" "NPN"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Sim.Pins" "1=E 2=C 3=B"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "Audio High Voltage NPN Transistor"
+			(property "ki_keywords" "NPN Darlington Darl Transistor"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1598,7 +1576,7 @@
 					)
 				)
 			)
-			(symbol "2SC1941_0_1"
+			(symbol "BC517_0_1"
 				(polyline
 					(pts
 						(xy -2.54 0) (xy 0.635 0)
@@ -1623,6 +1601,18 @@
 						(type none)
 					)
 				)
+				(polyline
+					(pts
+						(xy 0.635 0) (xy 2.54 1.905) (xy 2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(circle
 					(center 1.27 0)
 					(radius 2.8194)
@@ -1635,7 +1625,7 @@
 					)
 				)
 			)
-			(symbol "2SC1941_1_1"
+			(symbol "BC517_1_1"
 				(polyline
 					(pts
 						(xy 0.635 0.635) (xy 2.54 2.54)
@@ -1673,24 +1663,6 @@
 					)
 				)
 				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(name "E"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
 					(at 2.54 5.08 270)
 					(length 2.54)
 					(name "C"
@@ -1700,7 +1672,7 @@
 							)
 						)
 					)
-					(number "2"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1718,6 +1690,24 @@
 							)
 						)
 					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
 					(number "3"
 						(effects
 							(font
@@ -1729,26 +1719,6 @@
 			)
 			(embedded_fonts no)
 		)
-	)
-	(text "BTN_PIN1"
-		(exclude_from_sim no)
-		(at 193.04 75.184 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "008ae36e-ff01-4a8d-989a-bbd68962d58c")
-	)
-	(text "BTN_PIN2"
-		(exclude_from_sim no)
-		(at 193.04 77.724 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "1b494ea9-e405-45d0-816d-a04c2f2a4273")
 	)
 	(text_box "CIRCUIT\n"
 		(exclude_from_sim no)
@@ -1874,16 +1844,6 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 76.2) (xy 200.66 64.77)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "101c35c5-42c0-4e62-9013-c5deeede7682")
-	)
-	(wire
-		(pts
 			(xy 144.78 99.06) (xy 149.86 99.06)
 		)
 		(stroke
@@ -1891,6 +1851,16 @@
 			(type default)
 		)
 		(uuid "10d37cdc-9beb-455b-9280-62bd6e66cf9c")
+	)
+	(wire
+		(pts
+			(xy 198.12 76.2) (xy 198.12 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1999aaf1-28b6-435f-a465-fd7c8144b3e0")
 	)
 	(wire
 		(pts
@@ -1921,6 +1891,16 @@
 			(type default)
 		)
 		(uuid "2d20195b-5e2b-47a8-a24a-59b378326649")
+	)
+	(wire
+		(pts
+			(xy 187.96 76.2) (xy 198.12 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e8c0709-3ccb-44e7-a933-e312fc9c7939")
 	)
 	(wire
 		(pts
@@ -1964,16 +1944,6 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 64.77) (xy 200.66 64.77)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "43adc7f2-2f8b-4891-b563-e9fe1950efd1")
-	)
-	(wire
-		(pts
 			(xy 91.44 113.03) (xy 107.95 113.03)
 		)
 		(stroke
@@ -1981,16 +1951,6 @@
 			(type default)
 		)
 		(uuid "44c633b6-a8dd-4149-8562-7d01e0ea6ca9")
-	)
-	(wire
-		(pts
-			(xy 199.39 78.74) (xy 199.39 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "465b098e-a9f6-4536-a896-62a297dabfa6")
 	)
 	(wire
 		(pts
@@ -2021,16 +1981,6 @@
 			(type default)
 		)
 		(uuid "58045f08-5d6b-493b-be17-0a12bb34724d")
-	)
-	(wire
-		(pts
-			(xy 187.96 67.31) (xy 199.39 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "59b49d1f-e83e-4aac-a4eb-f6dce071bbda")
 	)
 	(wire
 		(pts
@@ -2084,16 +2034,6 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 78.74) (xy 199.39 78.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8d602dda-4802-45ed-85ad-1bd2687299c8")
-	)
-	(wire
-		(pts
 			(xy 144.78 72.39) (xy 144.78 76.2)
 		)
 		(stroke
@@ -2111,6 +2051,16 @@
 			(type default)
 		)
 		(uuid "aa777891-748a-4154-b299-1c96a89bef0d")
+	)
+	(wire
+		(pts
+			(xy 200.66 64.77) (xy 200.66 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "acbc59b5-ce14-4cdc-9f79-3be2536478fd")
 	)
 	(wire
 		(pts
@@ -2154,6 +2104,16 @@
 	)
 	(wire
 		(pts
+			(xy 187.96 64.77) (xy 200.66 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c71a9496-e8c8-49ae-af7c-c12a0126b0b6")
+	)
+	(wire
+		(pts
 			(xy 121.92 77.47) (xy 121.92 83.82)
 		)
 		(stroke
@@ -2161,6 +2121,16 @@
 			(type default)
 		)
 		(uuid "d01f89fa-6312-4d05-a423-a5c957a7e057")
+	)
+	(wire
+		(pts
+			(xy 187.96 67.31) (xy 198.12 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd84b544-8eb1-4a2a-b01c-c90bb1a3ba57")
 	)
 	(wire
 		(pts
@@ -2174,13 +2144,13 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 76.2) (xy 200.66 76.2)
+			(xy 200.66 78.74) (xy 187.96 78.74)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "ec1bafee-9bcc-446f-bb96-f6416d114259")
+		(uuid "f69487da-f093-48a8-9cfa-bb178774f764")
 	)
 	(wire
 		(pts
@@ -2604,7 +2574,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "LMR2-3D:LMR2-3D"
+		(property "Footprint" "Relay_THT:LMR2-3D"
 			(at 171.45 85.09 0)
 			(hide yes)
 			(show_name no)
@@ -2616,7 +2586,7 @@
 				(justify left)
 			)
 		)
-		(property "Datasheet" "http://omronfs.omron.com/en_US/ecb/products/pdf/en-g5v_2.pdf"
+		(property "Datasheet" "https://www.tme.eu/Document/cb95bab3047ea17130b1da862f2b7351/LMR-series.pdf"
 			(at 154.94 83.82 0)
 			(hide yes)
 			(show_name no)
@@ -2949,7 +2919,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Transistor_BJT:2SC1941")
+		(lib_id "Transistor_BJT:BC517")
 		(at 147.32 104.14 0)
 		(unit 1)
 		(body_style 1)
@@ -2959,7 +2929,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "c0e76c3a-0553-468a-8017-df12ddbff332")
+		(uuid "c0eed27d-486e-439a-8256-d2ee51dcf96f")
 		(property "Reference" "Q1"
 			(at 152.4 102.8699 0)
 			(show_name no)
@@ -2971,7 +2941,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2N2222"
+		(property "Value" "BC517"
 			(at 152.4 105.4099 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2995,7 +2965,7 @@
 				(justify left)
 			)
 		)
-		(property "Datasheet" "http://rtellason.com/transdata/2sc1941.pdf"
+		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/BC517-D74Z-D.PDF"
 			(at 147.32 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -3007,29 +2977,7 @@
 				(justify left)
 			)
 		)
-		(property "Description" "50mA Ic, 160V Vce, Audio High Voltage NPN Transistor, TO-92"
-			(at 147.32 104.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Device" "NPN"
-			(at 147.32 104.14 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Sim.Pins" "1=E 2=C 3=B"
+		(property "Description" "1A Ic, 30V Vce, Darlington NPN Transistor, TO-92"
 			(at 147.32 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -3041,13 +2989,13 @@
 			)
 		)
 		(pin "1"
-			(uuid "800ff49b-1010-45ea-ba03-acaf1720cba0")
+			(uuid "85126ea0-a8af-4054-a445-299cf91c2a91")
 		)
 		(pin "2"
-			(uuid "9fe2e30b-8fb9-4817-95ef-ade4ac7cdf36")
+			(uuid "03991336-33e9-40b9-be37-605f0554549b")
 		)
 		(pin "3"
-			(uuid "5dc80e8b-f10a-4290-9615-50d4c93a1e3a")
+			(uuid "a08594c4-2df2-4850-a670-ad6a661c67b3")
 		)
 		(instances
 			(project "remote-powerOn"

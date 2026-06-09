@@ -53,7 +53,7 @@
       "board_outline_area",
       "ly_points"
     ],
-    "visible_layers": "ffffffff_ffffffff_fffffff7_ffffffff",
+    "visible_layers": "ffffffff_ffffffff_fffffff7_ffffff7f",
     "zone_display_mode": 0
   },
   "git": {
@@ -120,8 +120,20 @@
   "project": {
     "files": [
       {
-        "name": "remote-powerOn.kicad_pcb",
+        "name": "remote-powerOn.kicad_sch",
         "open": true,
+        "window": {
+          "display": 0,
+          "maximized": true,
+          "pos_x": 12,
+          "pos_y": 61,
+          "size_x": 1445,
+          "size_y": 867
+        }
+      },
+      {
+        "name": "remote-powerOn.kicad_pcb",
+        "open": false,
         "window": {
           "display": 0,
           "maximized": true,
@@ -129,18 +141,6 @@
           "pos_y": 134,
           "size_x": 1280,
           "size_y": 720
-        }
-      },
-      {
-        "name": "remote-powerOn.kicad_sch",
-        "open": false,
-        "window": {
-          "display": 0,
-          "maximized": true,
-          "pos_x": -440,
-          "pos_y": -28,
-          "size_x": 1910,
-          "size_y": 984
         }
       }
     ]
