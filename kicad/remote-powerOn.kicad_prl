@@ -130,6 +130,18 @@
           "size_x": 1280,
           "size_y": 720
         }
+      },
+      {
+        "name": "remote-powerOn.kicad_sch",
+        "open": false,
+        "window": {
+          "display": 0,
+          "maximized": true,
+          "pos_x": 12,
+          "pos_y": 61,
+          "size_x": 1445,
+          "size_y": 867
+        }
       }
     ]
   },
