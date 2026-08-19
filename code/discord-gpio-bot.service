@@ -1,0 +1,15 @@
+[Unit]
+Description=Discord GPIO Remote Power-On Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/remote-powerOn
+ExecStart=/home/pi/remote-powerOn/venv/bin/python3 /home/pi/remote-powerOn/main.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
