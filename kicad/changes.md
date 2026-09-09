@@ -1,6 +1,9 @@
 # Change log
 This file keeps track of changes/updates on schematic and pcb design
 
+__v1.3.0:__
+- Add potentiometer for status led for brightness control
+
 __v1.2.1:__
 - Added cool design on B.Silkscreen
 
