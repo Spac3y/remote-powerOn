@@ -123,12 +123,12 @@
         "name": "remote-powerOn.kicad_pcb",
         "open": false,
         "window": {
-          "display": 1,
+          "display": 0,
           "maximized": true,
-          "pos_x": -219,
-          "pos_y": 771,
-          "size_x": 1983,
-          "size_y": 1265
+          "pos_x": 0,
+          "pos_y": 0,
+          "size_x": 1470,
+          "size_y": 956
         }
       }
     ]
