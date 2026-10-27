@@ -1,11 +1,13 @@
 """Two-part 3D-printed case for a 43 x 43 mm relay PCB.
 
-Short base locates the PCB with four loose-fit pegs through the M3 mounting
-holes. Tall cover press-fits onto the base with an internal lip; four hollow
-posts hang from its top down to just above the board at the mounting holes,
-trapping the PCB between them and the standoffs (no snap clips to break).
-The cover also carries a wire slot over the pin headers and a window over the
-two status LEDs.
+Short base holds the PCB on its own: four pegs through the M3 mounting holes
+carry three small crush ribs each, slightly larger than the hole, which
+squash when the board is pressed on and grip it by friction (no snap clips
+to break, no screws). Tall cover press-fits onto the base with an internal
+lip; four hollow posts hang from its top down to just above the board at the
+mounting holes as a second hold-down once the cover is on. The cover also
+carries a wire slot over the pin headers and a window over the two status
+LEDs.
 
 Coordinates: origin at PCB centre (XY), Z=0 at the outside bottom of the base.
 +Y is the top edge of the board as seen in the KiCad screenshot (the
@@ -39,8 +41,12 @@ pcb_gap = 0.5                   # PCB edge to inner wall
 corner_r = 3.0                  # outer vertical corner radius
 standoff_h = 4.0                # under-board clearance for solder joints
 standoff_d = 5.6                # board rests on this ring
-peg_d = 2.8                     # locating peg (0.2 clearance per side)
+peg_d = 2.9                     # peg core (0.15 clearance per side)
 peg_above = 1.0                 # straight peg length above PCB top
+rib_d = 3.5                     # crush-rib reach (0.15 interference per side)
+rib_w = 0.6                     # crush-rib width
+rib_grip = 1.0                  # full-size rib height above the standoff
+rib_lead = 1.0                  # rib taper above that (lead-in for the board)
 peg_tip = 0.8                   # conical lead-in on top of the peg
 peg_tip_d = 1.4                 # peg tip diameter
 base_wall_h = 14.0              # base rim height (cover sits on this)
@@ -48,7 +54,7 @@ top_clear = 1.5                 # air gap above relay
 
 # --- hold-down posts (hang from the cover onto the mounting-hole corners) ---
 post_d = 6.0                    # inside the 6.9 mm hole courtyard
-post_bore_d = peg_d + 0.6       # clears the peg tip
+post_bore_d = rib_d + 0.3       # clears the peg and its ribs
 post_bore_h = 3.0               # bore depth (peg sticks 1.8 above the PCB)
 post_gap = 0.2                  # play between post foot and PCB top
 post_rib_t = 3 * line_w         # 1.2 rib tying each post to its wall corner
@@ -73,6 +79,15 @@ lip_inner = lip_outer - 2 * lip_t
 lip_inner_r = max(inner_r - fit - lip_t, 0.2)
 post_z = pcb_top + post_gap                      # post foot
 
+# --- crush rib on +X of a peg at the origin: full size where the board hole
+# sits, tapering above it as a lead-in; radial (X) vs height (Z) profile ---
+rib = extrude(Plane.XZ * Polygon((peg_d / 2 - 0.2, pcb_z),
+                                 (rib_d / 2, pcb_z),
+                                 (rib_d / 2, pcb_z + rib_grip),
+                                 (peg_d / 2 - 0.2, pcb_z + rib_grip + rib_lead),
+                                 align=None),
+              amount=rib_w / 2, both=True)
+
 # --- base ---
 with BuildPart() as base_p:
     with BuildSketch():
@@ -95,6 +110,12 @@ with BuildPart() as base_p:
         with GridLocations(hole_pitch, hole_pitch, 2, 2):
             Cone(peg_d / 2, peg_tip_d / 2, peg_tip,
                  align=(Align.CENTER, Align.CENTER, Align.MIN))
+    # crush ribs, three per peg
+    for px in (-1, 1):
+        for py in (-1, 1):
+            for k in range(3):
+                add(rib.rotate(Axis.Z, 90 + 120 * k).move(
+                    Location((px * hole_pitch / 2, py * hole_pitch / 2, 0))))
 base = base_p.part
 
 # --- post ribs: diagonal from each post into the cover corner; below the
